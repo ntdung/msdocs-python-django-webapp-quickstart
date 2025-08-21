@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-def index(request, use_s3=True, cache_busting=True, optimizely_s3_bucket='optimizely-staging', account_id='6414039610032128'):
+def index(request, use_s3=False, cache_busting=True, optimizely_s3_bucket='optimizely-staging', account_id='6414039610032128'):
     print('Request for index page received')
     snippet_url = ''
     if use_s3:
