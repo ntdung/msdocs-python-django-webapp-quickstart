@@ -24,7 +24,7 @@ def hello(request):
 
 def newhello(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
+        name = request.POST.get('newname')
 
         if name is None or name == '':
             print("Request for hello page received with no name or blank name -- redirecting")
