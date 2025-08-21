@@ -21,7 +21,7 @@ def hello(request):
     else:
         return redirect('index')
 
-
+@csrf_exempt
 def newhello(request):
     if request.method == 'POST':
         name = request.POST.get('newname')
