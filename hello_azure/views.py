@@ -1,10 +1,23 @@
+import time
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-def index(request):
+def index(request, use_s3=True, cache_busting=True, optimizely_s3_bucket='optimizely-staging', account_id='6414039610032128'):
     print('Request for index page received')
-    return render(request, 'hello_azure/index.html')
+    snippet_url = ''
+    if use_s3:
+        snippet_url = "//%s.s3.amazonaws.com/js/%s.js" % (optimizely_s3_bucket, account_id)
+        if cache_busting:
+            query_symbol = '&' if '?' in snippet_url else '?'
+            snippet_url += query_symbol + 'cache_buster={}'.format(time.time())
+    context = {
+        'snippet_url': snippet_url,
+    }
+    return render(request, 'hello_azure/index.html', context)
+
+
 
 @csrf_exempt
 def hello(request):

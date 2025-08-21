@@ -4,6 +4,9 @@
     <title>Hello Azure - Python Quickstart</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="icon"href="{% static 'favicon.ico' %}">
+    {% if snippet_url %}
+        <script src="{{ snippet_url }}"></script>
+    {% endif %}
 </head>
 <html>
    <body>
