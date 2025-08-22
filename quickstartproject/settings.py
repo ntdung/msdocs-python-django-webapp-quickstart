@@ -27,6 +27,7 @@ SECRET_KEY = '1234567890'
 DEBUG = True
 
 ALLOWED_HOSTS = ['.azurewebsites.net', 'qaexample.optimizely.com', 'expsample.thienviet.net']
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
 
 # Application definition
@@ -126,7 +127,9 @@ STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CSRF_TRUSTED_ORIGINS = ['https://expsample.thienviet.net', 'https://qaexample.optimizely.com']
