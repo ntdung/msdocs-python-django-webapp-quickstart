@@ -26,9 +26,7 @@ SECRET_KEY = '1234567890'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.azurewebsites.net', 'qaexample.optimizely.com', 'expsample.thienviet.net']
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-
+ALLOWED_HOSTS = ['.azurewebsites.net', 'qaexample.optimizely.com', 'expsample.thienviet.net', os.environ.get('WEBSITE_HOSTNAME')]
 
 # Application definition
 
